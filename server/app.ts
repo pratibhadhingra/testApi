@@ -3,7 +3,7 @@ import rootRouter from "./src/Features/RootRouter";
 import cors from "cors";
 
 const app: Express = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(cors())
 

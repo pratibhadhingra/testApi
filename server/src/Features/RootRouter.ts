@@ -1,9 +1,10 @@
 import express from 'express';
-import userRoutes from "../Features/Auth/Routes";
-import authRoutes from '../Features/Auth/Auth'
+
+import authRoutes from './Auth/Routes'
+import userRouter from './User/Routes';
 const rootRouter = express.Router();
 
 rootRouter.use("/auth", authRoutes);
-rootRouter.use("/users", userRoutes);
+rootRouter.use("/users", userRouter);
 
 export default rootRouter

@@ -1,6 +1,3 @@
-.App {
-  text-align: center;
-}
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +32,46 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* ************ Login ************** */
+.Login_form {
+  text-align: center;
+}
+
+/* ******************Profile **************** */
+
+.profile_details {
+  width: 70vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  color: rgb(117, 117, 117);
+  margin-left: 7rem;
+}
+
+.profile_data {
+ display: flex;
+}
+
+.profile_data > img {
+  width: 6.5rem;
+  height: 6rem;
+}
+
+.profile_data > h2 {
+  margin-top: 2rem;
+  margin-left: 2.3rem;  
+}
+
+.data {
+  margin-top: 2rem;
+  width: 25rem;
+}
+
+.data > h2> span{  
+  margin-left: 7rem;
 }

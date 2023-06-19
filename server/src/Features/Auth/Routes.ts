@@ -1,17 +1,10 @@
+
 import express from "express";
-import { deleteApi, getApi, patchApi, postApiProfile } from "./Controllers";
-import { verifyToken } from "../../Middlewares/Authentication/authentication";
+import { postLoginApi } from "./Controllers";
+import { validationAuth } from "../../Middlewares/Validations/validation";
 
-const router = express.Router();
+const auth = express.Router();
 
-// all routes in here are starting with /users
+auth.post("/",validationAuth, postLoginApi);
 
-router.get("/profile", getApi);
-
-router.post('/profile', verifyToken, postApiProfile)
-
-router.delete("/:id", deleteApi);
-
-router.patch("/:id", patchApi);
-
-export default router;
+export default auth
