@@ -18,15 +18,19 @@ export class AuthServices {
         email === AuthCredentials.email &&
         password === AuthCredentials.password
       ) {
+       
+        const token = jwt.sign({ email, password }, secretKey, {
+          expiresIn: "30s",
+        });
+        // console.log("token", token);
         const response = {
           data: body,
           status: 200,
           message: "Profile data fetched!",
+          token: token,
+          auth: true
         };
-        const token = jwt.sign({ email, password }, secretKey, {
-          expiresIn: "300s",
-        });
-        console.log("token", token);
+
 
         return response;
       } else {

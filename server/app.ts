@@ -11,6 +11,11 @@ app.use(express.json());
 
 app.use("/api/v1", rootRouter);
 
+// app.get('/logout', () => {
+//   window.localStorage.removeItem('myToken')
+//   console.log("logout")
+// })
+
 const start = async () => {
   try {
     app.listen(PORT, () => {

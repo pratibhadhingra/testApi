@@ -23,7 +23,11 @@ const Login = () => {
 
     try {
       const res = await postAuthService(data);
+      console.log('response', res)
+      const token = res.token
+
       if (res.status === 200) {
+        window.localStorage.setItem('myToken', token);
         navigate("/profile");
       } else {
         alert("Failed");
