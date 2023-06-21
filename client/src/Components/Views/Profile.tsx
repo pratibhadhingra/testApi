@@ -15,15 +15,19 @@ const Profile = () => {
   } = useForm<ProfileFormValues>({
     resolver: yupResolver(ProfileSchema),
   });
-
+  
   const navigate = useNavigate();
 
   const getUserProfile = async () => {
     const res = await getUserService();
+    console.log("tokenn", res.token)
+    if(!res.token) {
+      alert('failed to authenticate');
+      navigate('/')
+    }
 
     if (res.status) {
       const fetchData = res.data;
-      // console.log(fetchData)
 
       reset({
         firstName: fetchData.firstName,
@@ -55,7 +59,7 @@ const Profile = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onsubmit)} className="Login_form">
+        <form onSubmit={handleSubmit(onsubmit)} className="Login_form">
         <h1>Fill your details</h1>
         <div>
           <input
@@ -118,6 +122,7 @@ const Profile = () => {
           Submit
         </button>
       </form>
+  
     </div>
   );
 };

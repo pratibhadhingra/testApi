@@ -4,8 +4,18 @@ import { ProfileService } from "./Service";
 export const getProfileApi = async (req: Request, res: Response) => {
   try {
     const data = await ProfileService.getUserProfile();
+    const bearerHeader: any = req.headers.header || req.headers["authorization"]
+  
     if (data.code === 200) {
-      res.send(data);
+      if(typeof bearerHeader !== "undefined") {
+        const bearer = bearerHeader.split(" ");
+        const token = bearer[2];
+        res.send({...data, token})
+      }
+      else {
+
+        res.send(data);
+      }
     }
   } catch (error: any) {
     res.status(error.output?.statusCode ?? 500).json(error);

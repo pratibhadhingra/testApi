@@ -33,6 +33,8 @@ const Login = () => {
         alert("Failed");
       }
     } catch (err) {
+      window.localStorage.removeItem('myToken');
+
       alert("Login failed ...check your details");
     }
     setIsLoading(false)

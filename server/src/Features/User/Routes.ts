@@ -9,7 +9,7 @@ const userRouter = express.Router();
 
 userRouter.get("/",verifyToken, getProfileApi);
 
-userRouter.post("/", validationProfile, postProfileApi);
+userRouter.post("/", validationProfile,verifyToken, postProfileApi);
 
 // userRouter.get("/", getProfileApi);
 

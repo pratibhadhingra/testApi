@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { authData } from "../../Interfaces/Interfaces";
 
 export const secretKey = "secretKey";
+import Cookies from 'js-cookie'
 
 export class AuthServices {
   static loginService = async (body: authData) => {
@@ -22,9 +23,11 @@ export class AuthServices {
         const token = jwt.sign({ email, password }, secretKey, {
           expiresIn: "30s",
         });
+    
+        
         // console.log("token", token);
         const response = {
-          data: body,
+          data: {email,password},
           status: 200,
           message: "Profile data fetched!",
           token: token,
@@ -34,7 +37,7 @@ export class AuthServices {
 
         return response;
       } else {
-        const response = { status: 401, message: "Login data failed!" };
+        const response = { status: 401, message: "Login data failed!" , token:"invalid"};
         return response;
       }
     }

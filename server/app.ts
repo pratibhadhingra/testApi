@@ -5,7 +5,12 @@ import cors from "cors";
 const app: Express = express();
 const PORT = 3001;
 
-app.use(cors())
+const corsOptions = {
+  credentials: true,
+  ///..other options
+};
+
+app.use(cors(corsOptions))
 
 app.use(express.json());
 
@@ -26,3 +31,5 @@ const start = async () => {
   }
 };
 start();
+
+

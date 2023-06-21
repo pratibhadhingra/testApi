@@ -31,6 +31,7 @@ export class ProfileService {
 
   static getUserProfile = async () => {
     let response;
+    
     if (profileData) {
       response = {
         data: profileData,
